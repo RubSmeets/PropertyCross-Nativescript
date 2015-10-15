@@ -1,0 +1,19 @@
+<Page loaded="onLoaded" navigatedTo="onNavigatedTo">
+	<Page.actionBar>
+		<ActionBar title="Details" >
+			<ActionBar.actionItems>
+				<ActionItem icon="" text="{{ isFavourite ? 'UnFaves' : 'Faves' }}" tap="onFavesTap" ios.position="right" />
+			</ActionBar.actionItems>
+		</ActionBar>
+	</Page.actionBar>
+
+	<ScrollView>
+		<StackLayout>
+			<Label text="{{ price }}" textWrap="true" />
+			<Label text="{{ title }}" textWrap="true" />
+			<Image src="{{ img_url }}" stretch ="aspectFill" />
+			<!-- <Label text="{{ $value, $value | testConverter() }}" textWrap="true" /> -->
+			<Label text="{{ summary }}" textWrap="true" />
+		</StackLayout>
+	</ScrollView>
+</Page>

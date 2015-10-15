@@ -1,0 +1,26 @@
+<Page loaded="onLoaded" navigatedTo="onNavigatedTo">
+	<GridLayout rows="*" columns="*">
+		<Label text="{{ isEmpty ? 'You have not added any properties to your favourites' : '' }}"
+			textWrap="true" 
+			horizontalAlignment="center"
+			verticalAlignment= "center" />
+		<ListView id="resultsListview" items="{{ properties }}" itemTap="onListViewItemTap" loadMoreItems="onlistViewLoadMoreItems">
+			<ListView.itemTemplate>
+				<!-- -----------------------
+					 |     | price         |
+					 | img |---------------|
+					 |     | title         |
+					 ----------------------- -->
+				<GridLayout rows="auto, auto" columns="auto, *" >
+					<Image src="{{ thumb_url }}" width="64" height="64"
+						rowSpan="2" />
+					<Label text="{{ price }}" cssClass="title"
+						col="1" />
+					<Label text="{{ title }}" cssClass="title"
+						row="1"
+						col="1" />
+				</GridLayout>
+			</ListView.itemTemplate>
+		</ListView>
+	</GridLayout>
+</Page>
