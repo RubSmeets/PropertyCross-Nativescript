@@ -1,0 +1,48 @@
+# ARCHITECTURAL DECISIONS #
+# -------- General --------
+* Saved all the favoured search result inside a single file. Each time you write to a file the previous content is overwritten.
+	- Could save each search result into a seperate file with the "guid" property as name
+	- TEMP SOLUTION:
+		- Used a single file to store all the favoured search results in JSON format. Each time we remove/add new items the complete file has to be overwritten with a local representation of the file content (array).
+
+* The HTTP get request requires some request parameters to filter the request at the back-end
+	- Should use the request-options of the http-module (or fetch module) to supply the parameters
+	- TEMP SOLUTION:
+		- Used a function to strinify the parameters and concatenated them to the remote domain url.
+
+* In android the softkeyboard is shown on application start-up for the searchBar UI module. There is no method to hide the keyboard like with UI textView module. There is however a workaround: https://github.com/NativeScript/NativeScript/issues/849
+	- Should use the dismissSoftInput method to hide the keyboard
+	- TEMP SOLUTION:
+		- Used work around available at the above url. Note: for some reason the function call should be delayed on application start-up to get desired behaviour??
+
+* I used a local copy of the localstorage files in this application in the form of an array. During execution the application uses the arrays for data management. Whenever the array content changes it is synced back to the local storage. However one of the application requirements is to show a list of previously performed searches on start-up. This requires me to load the content of the localstorage on application start-up. Loading takes time and therefore we need to wait before the arrays are filled before updating the UI of the ListView.
+	- Should call the UI update once the files are loaded from localstorage
+	- TEMP SOLUTION:
+		- Delay execution of the UI update based on a fixed value (unrelated to file load times --> NOT GOOD!)
+
+# -------- iOS --------
+* Can't locate "application.plist" file for editing permissions
+	- Should I create the file in root?
+	- TEMP SOLUTION:
+		- Added permissions inside the "PropertyCrossNativeScript/platforms/ios/PropertyCrossNativeScript/PropertyCrossNativeScript-Info.plist" file instead.
+
+* Adding permissions for iOS location services inside the info.plist
+	- http://stackoverflow.com/questions/24062509/location-services-not-working-in-ios-8
+
+
+# -------- Android --------
+
+# TODO #
+# -------- General --------
+* Code cleanup is required
+
+* Implement the load more items on the listView
+
+* Change the binding of the faves button on the result details view
+
+* Change the result details faves-button to show an icon instead of text
+
+* Add back button support for android + finish it for ios
+
+* finish the result details view --> add the number of bathrooms etc...
+
