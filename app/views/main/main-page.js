@@ -140,6 +140,7 @@ function onSearchItemTap( args ) {
 
 function onListFavesTap( args ) {
 	// navigate to favourites list
+	_hideSoftKeyBoard();
 	navigation.goToResults(localStorage.getFavouritesArray());
 }
 

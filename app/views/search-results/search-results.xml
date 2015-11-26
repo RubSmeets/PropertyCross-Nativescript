@@ -1,4 +1,8 @@
 <Page loaded="onLoaded" navigatedTo="onNavigatedTo">
+	<Page.actionBar>
+		<ActionBar title="Results" />
+	</Page.actionBar>
+
 	<GridLayout rows="*" columns="*">
 		<Label text="{{ isEmpty ? 'You have not added any properties to your favourites' : '' }}"
 			textWrap="true" 

@@ -1,6 +1,6 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" loaded="onLoaded" navigatedTo="onNavigatedTo">
 	<Page.actionBar>
-		<ActionBar title="PropertyCrosss" >
+		<ActionBar title="PropertyCross" >
 			<ActionBar.actionItems>
 				<ActionItem icon="" text="Faves" tap="onListFavesTap" ios.position="right" />
 			</ActionBar.actionItems>
