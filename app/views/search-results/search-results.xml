@@ -8,7 +8,7 @@
 			textWrap="true" 
 			horizontalAlignment="center"
 			verticalAlignment= "center" />
-		<ListView id="resultsListview" items="{{ properties }}" itemTap="onListViewItemTap" loadMoreItems="onlistViewLoadMoreItems">
+		<ListView id="resultsListview" items="{{ properties }}" itemTap="onListViewItemTap" loadMoreItems="onlistViewLoadMoreItems" visibility="{{ isEmpty ? 'collapsed' : 'hidden' }}">
 			<ListView.itemTemplate>
 				<!-- -----------------------
 					 |     | price         |

@@ -20,15 +20,14 @@ function onLoaded( args ) {
 
 	_sortOutFavesButton(result);
 
-	console.log('loaded!');
+	console.log("loaded!");
 }
 
 /**
  * Called when the page is navigated to
  */
 function onNavigatedTo( args ) {
-	var page = args.object;
-	console.log('navigated!');
+	console.log("navigated!");
 }
 
 function onFavesTap ( args ) {

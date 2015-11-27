@@ -29,6 +29,15 @@
 * Adding permissions for iOS location services inside the info.plist
 	- http://stackoverflow.com/questions/24062509/location-services-not-working-in-ios-8
 
+* Adding permissions to allow unsecured http request inside the info.plist
+	- http://stackoverflow.com/questions/31254725/transport-security-has-blocked-a-cleartext-http
+
+* Image on result-details is not showing in iOS
+	- FIX: Specify the height of the image in css
+
+* When the listView is empty we need to show a message instead of the empty list.
+	- In Android it works, iOS still needs some tuning
+		- FIX: tied visibility attribute of list to isEmpty property
 
 # -------- Android --------
 
