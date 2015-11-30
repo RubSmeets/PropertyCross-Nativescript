@@ -43,7 +43,7 @@
 
 # TODO #
 # -------- General --------
-* Code cleanup is required
+* Code cleanup is required (memory leaks!!!!!!)
 
 * Implement the load more items on the listView
 

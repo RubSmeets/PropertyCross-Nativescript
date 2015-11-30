@@ -152,29 +152,10 @@ function onListFavesTap( args ) {
  * Executes a HTTP get request with the given parameters
  */
 function _makeRequest( values ) {
-	var parameters;
-	var stringifiedParams;
-
-	//console.log("Coords: " + values.centre_point.coords.longitude + " " + values.centre_point.coords.latitude);
-	// Create parameters for request
-	parameters = {
-		place_name: values.place_name || "",
-		centre_point: values.centre_point && utils.formatCoord(values.centre_point.coords, 5),
-		country : "uk",
-		pretty : "1",
-		action : "search_listings",
-		encoding : "json",
-		page: "1",
-		listing_type : "buy"
-	}
-
 	// Indicate that we are loading
 	viewModel.set("isLoading", true);
 
-	stringifiedParams = utils.stringifyURLparameters(parameters);
-	console.log(stringifiedParams);
-
-	nestoriaAPI.getProperties(constants.BASE_URL+stringifiedParams)
+	nestoriaAPI.getProperties(values)
 		.then(function (response) {
 			var result = response.content.toJSON();
 			_onFirstResult(result.response, values);
@@ -210,7 +191,7 @@ function _onFirstResult( response, values ) {
 			// add to previous searches
 			_addToPreviousSearches(response.locations[0].place_name, values.centre_point, response.locations[0].long_title, response.total_results);
 			// Convert listings to Property Objects
-			results = _convertToPropertyArray(response.listings);
+			results = _convertToPropertyArray(response.listings, response.total_pages);
 			// go to results
 			_hideSoftKeyBoard();
 			navigation.goToResults(results);
@@ -274,7 +255,8 @@ function _isArray( value ) {
 	return (Object.prototype.toString.call( value ) === '[object Array]');
 }
 
-function _convertToPropertyArray( listings ) {
+function _convertToPropertyArray( listings, totalPages ) {
+	var results;
 	var properties = [];
 	var property;
 
@@ -282,7 +264,12 @@ function _convertToPropertyArray( listings ) {
 		property = new PropertyModel(listings[i]);
 		properties.push(property);
 	}
-	return properties;
+
+	results = {
+		properties: properties,
+		totalPages: totalPages
+	};
+	return results;
 }
 
 function _findPreviousSearchIndex( previousSearches, currSearch ) {

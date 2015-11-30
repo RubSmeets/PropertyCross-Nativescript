@@ -3,7 +3,10 @@ var vmModule = require("./search-results-view-model");
 var vmModel = vmModule.model;
 var viewModule = require("ui/core/view");
 var navigation = require("../../shared/navigation");
+var nestoriaAPI = require("../../shared/nestoriaAPI");
 
+var _totalPages;
+var _pageCount;
 /*------------------------------*/
 /* Handler Functions
 /*------------------------------*/
@@ -13,16 +16,21 @@ var navigation = require("../../shared/navigation");
  */
 function onLoaded( args ) {
 	var page = args.object;
+	var navigationContext = page.navigationContext;
 	var listView;
 
-	if(page.navigationContext !== undefined) {
-		if(page.navigationContext.length === 0) vmModel.set("isEmpty", true);
-		else vmModel.set("isEmpty", false);
+	if(navigationContext !== undefined) {
+		if(navigationContext.hasOwnProperty('properties')) vmModel.set("isEmpty", false);
+		else vmModel.set("isEmpty", true);
 
 		page.bindingContext = vmModel;
 
+		// Set the total amount of pages
+		_totalPages = navigationContext.totalPages;
+		_pageCount = 1;
+
 		// init observable array
-		vmListModule.initArray(page.navigationContext);
+		vmListModule.initArray(navigationContext.properties);
 
 		// bind observable array to list context
 		listView = viewModule.getViewById(page, "resultsListview");
@@ -52,7 +60,21 @@ function onListViewItemTap( args ) {
 
 function onlistViewLoadMoreItems ( args ) {
 	console.log("Load more");
-	// ???? how will i do this?
+
+	if(_pageCount < _totalPages) {
+		nestoriaAPI.loadMoreProperties()
+			.then(function (response) {
+				var result = response.content.toJSON();
+				//Update page count
+				_pageCount++;
+				//Add new listings to array
+				vmListModule.pushItem(result.response.listings);
+
+				console.log("http callback ok " + _pageCount);
+			}, function (e) {
+				console.log("Error occurred " + e);
+			});
+	}
 }
 
 exports.onLoaded = onLoaded;
