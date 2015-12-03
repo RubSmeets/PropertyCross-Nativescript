@@ -17,4 +17,4 @@ module.exports = {
 	refreshItems: function ( items ) {
 		return _refreshItems(items);
 	}
-}
+};

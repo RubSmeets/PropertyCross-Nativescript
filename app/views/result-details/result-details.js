@@ -1,8 +1,8 @@
-var viewModule = require("ui/core/view");
 var localStorage = require("../../shared/local-storage/local-storage");
+var viewModelModule = require("./result-details-view-model");
 
 var _page;
-var _viewModel;
+var _viewModel = viewModelModule.model;
 /*------------------------------*/
 /* Handler Functions
 /*------------------------------*/
@@ -15,8 +15,9 @@ function onLoaded( args ) {
 	var result = _page.navigationContext;
 
 	//Bind page content to result details
-	_page.bindingContext = result;
-	_viewModel = _page.bindingContext;
+	viewModelModule.initViewModel(result);
+	_page.bindingContext = null;
+	_page.bindingContext = _viewModel;
 
 	_sortOutFavesButton(result);
 
@@ -57,9 +58,9 @@ function _sortOutFavesButton( currResult ) {
 	// Find if the currSearch is in the previousSearches
 	var storedResultIndex = _findResultIndex(favourites, currResult);
 	if(storedResultIndex !== null) {
-		_viewModel.isFavourite =  true;
+		_viewModel.set("isFavourite", true);
 	} else {
-		_viewModel.isFavourite =  false;
+		_viewModel.set("isFavourite", false);
 	}
 }
 

@@ -2,7 +2,7 @@ var httpModule = require("http");
 var utils = require("./utils/util");
 var constants = require("./utils/constants");
 
-var _parameters
+var _parameters;
 
 function _getProperties( values ) {
 	//console.log("Coords: " + values.centre_point.coords.longitude + " " + values.centre_point.coords.latitude);
@@ -17,7 +17,7 @@ function _getProperties( values ) {
 		encoding : "json",
 		page: 1,
 		listing_type : "buy"
-	}
+	};
 	return _makeRequestWithParams();
 }
 

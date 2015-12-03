@@ -1,8 +1,8 @@
-var observable = require('data/observable');
+var observable = require("data/observable");
 var json = {
-	listTitle: 'Recent locations',
-	searchText: '',
-	errorMessage: '',
+	listTitle: "Recent locations",
+	searchText: "",
+	errorMessage: "",
 	isLoading: false
 };
 // create observable model that is sourced from a JSON object

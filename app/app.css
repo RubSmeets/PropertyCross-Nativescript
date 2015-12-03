@@ -2,3 +2,7 @@
 button {
     horizontal-align: left;
 }
+
+.awesome-icon {
+	font-family: 'FontAwesome';
+}

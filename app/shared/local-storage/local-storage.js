@@ -18,7 +18,7 @@ function _syncFavourites ( favourites ) {
 		.then(function (args) {
 			console.log("file written");
 		}, function (error) {
-			console.log("file failed")
+			console.log("file failed");
 		});
 }
 
@@ -30,7 +30,7 @@ function _loadFavourites () {
 	var favouritesFile = _getFavouritesFile();
 	favouritesFile.readText()
 		.then(function (content) {
-				if(content) _favourites = JSON.parse(content);
+				if(content) { _favourites = JSON.parse(content); }
 				_isLoaded = true;
 				console.log("Loaded favourites");
 			}, function ( error ) {
@@ -67,7 +67,7 @@ function _loadPreviousSearches() {
 	var searchesFile = _getPreviousSearchesFile();
 	searchesFile.readText()
 		.then(function (content) {
-				if(content) _previousSearches = JSON.parse(content);
+				if(content) { _previousSearches = JSON.parse(content); }
 				_isLoaded = true;
 				console.log("Loaded previous searches");
 			}, function ( error ) {
@@ -89,7 +89,7 @@ function _deleteSearchesFile () {
 			console.log("successfully removed");
 		}, function (error) {
 			console.log("something went wrong while removing");
-		})
+		});
 }
 
 module.exports = {

@@ -20,8 +20,8 @@ function onLoaded( args ) {
 	var listView;
 
 	if(navigationContext !== undefined) {
-		if(navigationContext.hasOwnProperty('properties')) vmModel.set("isEmpty", false);
-		else vmModel.set("isEmpty", true);
+		if(navigationContext.hasOwnProperty("properties")) { vmModel.set("isEmpty", false); }
+		else { vmModel.set("isEmpty", true); }
 
 		page.bindingContext = vmModel;
 
@@ -36,7 +36,7 @@ function onLoaded( args ) {
 		listView = viewModule.getViewById(page, "resultsListview");
 		listView.items = vmListModule.properties;
 	}
-	console.log('loaded!');
+	console.log("loaded!");
 }
 
 /**
@@ -44,7 +44,7 @@ function onLoaded( args ) {
  */
 function onNavigatedTo( args ) {
 	page = args.object;
-	console.log('navigated!');
+	console.log("navigated!");
 }
 
 /**

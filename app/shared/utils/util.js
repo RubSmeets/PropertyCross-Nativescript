@@ -2,7 +2,7 @@
  * trims the leading and trailing spaces from string
  */
 function trim( s ) {
-	return s.replace(/^\s+|\s+$/g, '');
+	return s.replace(/^\s+|\s+$/g, "");
 }
 
 /**

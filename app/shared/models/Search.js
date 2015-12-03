@@ -11,7 +11,7 @@ function Search ( placeName, centre_point, displayName, totalResults ) {
 	this.centre_point = centre_point;
 	this.count = totalResults;
 	this.searchTimeMS = new Date().getTime();
-};
+}
 
 /**
  * Test property getter and setter

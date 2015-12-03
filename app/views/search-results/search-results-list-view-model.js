@@ -29,4 +29,4 @@ module.exports = {
 	initArray: function ( items ) {
 		return _initArray(items);
 	}
-}
+};

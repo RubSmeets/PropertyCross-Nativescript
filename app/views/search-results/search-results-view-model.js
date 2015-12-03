@@ -1,4 +1,4 @@
-var observable = require('data/observable');
+var observable = require("data/observable");
 var json = {
 	isEmpty: false
 };

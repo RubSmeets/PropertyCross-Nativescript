@@ -1,5 +1,4 @@
 var frameModule = require("ui/frame");
-var applicationModule = require("application");
 var isMain;
 
 module.exports = {

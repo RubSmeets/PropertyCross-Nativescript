@@ -24,7 +24,6 @@ var _currPage;
  */
 function onLoaded( args ) {
     var page = args.object;
-    var listView;
     page.bindingContext = viewModel;
 
     // set the page
@@ -139,9 +138,11 @@ function onSearchItemTap( args ) {
 }
 
 function onListFavesTap( args ) {
+	var context = {};
 	// navigate to favourites list
 	_hideSoftKeyBoard();
-	navigation.goToResults(localStorage.getFavouritesArray());
+	context.properties = localStorage.getFavouritesArray();
+	navigation.goToResults(context);
 }
 
 
@@ -222,7 +223,7 @@ function _addToPreviousSearches( placeName, centre_point, displayName, totalResu
 		previousSearches.splice(oldSearchIndex, 1);
 	} else {
 		// remove last element from array
-		if(previousSearches.length >= 5) previousSearches.pop();
+		if(previousSearches.length >= 5) { previousSearches.pop(); }
 	}
 
 	// Add new search to first position of array
@@ -252,7 +253,7 @@ function resetMain( ) {
 /* Utility Functions
 /*------------------------------*/
 function _isArray( value ) {
-	return (Object.prototype.toString.call( value ) === '[object Array]');
+	return (Object.prototype.toString.call( value ) === "[object Array]");
 }
 
 function _convertToPropertyArray( listings, totalPages ) {
@@ -302,7 +303,7 @@ function _showTitleMessage ( message ) {
 	viewModel.set("listTitle", message);
 
 	// Check if allready visible
-	if (!listTitleLabel._isVisible) listTitleLabel.visibility = "visible";
+	if (!listTitleLabel._isVisible) { listTitleLabel.visibility = "visible"; }
 
 	// Show list view
 	_showListView();
@@ -310,17 +311,17 @@ function _showTitleMessage ( message ) {
 
 function _hideTitleMessage () {
 	var listTitleLabel = viewModule.getViewById(_currPage, "previousSearchesList");
-	if (listTitleLabel._isVisible) listTitleLabel.visibility = "collapsed";
+	if (listTitleLabel._isVisible) { listTitleLabel.visibility = "collapsed"; }
 }
 
 function _showListView () {
 	var listView = viewModule.getViewById(_currPage, "previousSearchesList");
-	if(!listView._isVisible) listView.visibility = "visible";
+	if(!listView._isVisible) { listView.visibility = "visible"; }
 }
 
 function _hideListView () {
 	var listView = viewModule.getViewById(_currPage, "mainListTitle");
-	if(listView._isVisible) listView.visibility = "collapsed";
+	if(listView._isVisible) { listView.visibility = "collapsed"; }
 }
 
 function _updateListViewSource ( items ) {
@@ -345,7 +346,6 @@ function _hideSoftKeyBoard () {
  * @param the current page
  */
 function _showErrorMessage ( message ) {
-	var listTitleLabel = viewModule.getViewById(_currPage, "previousSearchesList");
 	var errorLabel = viewModule.getViewById(_currPage, "mainErrorMessage");
 	
 	// Hide List and List Title
@@ -356,7 +356,7 @@ function _showErrorMessage ( message ) {
 	viewModel.set("errorMessage", message);
 
 	// Check if allready visible
-	if (!errorLabel._isVisible) errorLabel.visibility = "visible";
+	if (!errorLabel._isVisible) { errorLabel.visibility = "visible"; }
 }
 
 /**
@@ -367,7 +367,7 @@ function _showErrorMessage ( message ) {
 function _hideErrorMessage () {
 	var errorLabel = viewModule.getViewById(_currPage, "mainErrorMessage");
 	// Check if allready hidden
-	if (errorLabel._isVisible) errorLabel.visibility = "collapsed";
+	if (errorLabel._isVisible) { errorLabel.visibility = "collapsed"; }
 }
 
 exports.onLoaded = onLoaded;

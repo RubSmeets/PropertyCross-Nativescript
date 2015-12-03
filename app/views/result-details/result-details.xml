@@ -2,7 +2,8 @@
 	<Page.actionBar>
 		<ActionBar title="Details" >
 			<ActionBar.actionItems>
-				<ActionItem icon="" text="{{ isFavourite ? 'UnFaves' : 'Faves' }}" tap="onFavesTap" ios.position="right" />
+				<!-- <ActionItem icon="" text="{{ isFavourite ? '&#xf006;' : '&#xf005;' }}" tap="onFavesTap" ios.position="right" cssClass="awesome-icon"/> -->
+				<ActionItem icon="" text="{{ isFavourite ? 'UNFAVES' : 'FAVES' }}" tap="onFavesTap" ios.position="right" cssClass="awesome-icon"/>
 			</ActionBar.actionItems>
 		</ActionBar>
 	</Page.actionBar>
@@ -12,7 +13,7 @@
 			<Label text="{{ price }}" textWrap="true" />
 			<Label text="{{ title }}" textWrap="true" />
 			<Image src="{{ img_url }}" stretch="aspectFill" />
-			<!-- <Label text="{{ $value, $value | testConverter() }}" textWrap="true" /> -->
+			<Label text="{{ $value, $value | testConverter() }}" textWrap="true" />
 			<Label text="{{ summary }}" textWrap="true" />
 		</StackLayout>
 	</ScrollView>

@@ -25,6 +25,7 @@
 	- Should I create the file in root?
 	- TEMP SOLUTION:
 		- Added permissions inside the "PropertyCrossNativeScript/platforms/ios/PropertyCrossNativeScript/PropertyCrossNativeScript-Info.plist" file instead.
+	- Fix: the files are only available in the Telerik app builder cloud service. Not on the CLI
 
 * Adding permissions for iOS location services inside the info.plist
 	- http://stackoverflow.com/questions/24062509/location-services-not-working-in-ios-8
@@ -41,17 +42,20 @@
 
 # -------- Android --------
 
+# DEV TOOLS #
+# -------- General --------
+* JSHINT does not work with latest version
+	- FIX: revert to older version 1.6.0
+
 # TODO #
 # -------- General --------
 * Code cleanup is required (memory leaks!!!!!!)
 
-* Implement the load more items on the listView
+* Use the enums module instead of hardcoded strings
 
-* Change the binding of the faves button on the result details view
+* Show how many pages are left at the bottom of the list view
 
 * Change the result details faves-button to show an icon instead of text
-
-* Add back button support for android + finish it for ios
 
 * finish the result details view --> add the number of bathrooms etc...
 
