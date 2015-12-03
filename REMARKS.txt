@@ -47,15 +47,14 @@
 * JSHINT does not work with latest version
 	- FIX: revert to older version 1.6.0
 
+* Adding JSHINT and GULP breaks android build
+
 # TODO #
 # -------- General --------
 * Code cleanup is required (memory leaks!!!!!!)
-
-* Use the enums module instead of hardcoded strings
 
 * Show how many pages are left at the bottom of the list view
 
 * Change the result details faves-button to show an icon instead of text
 
-* finish the result details view --> add the number of bathrooms etc...
 

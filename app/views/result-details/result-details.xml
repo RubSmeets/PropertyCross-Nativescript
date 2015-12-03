@@ -10,10 +10,10 @@
 
 	<ScrollView>
 		<StackLayout>
-			<Label text="{{ price }}" textWrap="true" />
+			<Label text="{{ price }}" textWrap="true" cssClass="title" />
 			<Label text="{{ title }}" textWrap="true" />
 			<Image src="{{ img_url }}" stretch="aspectFill" />
-			<Label text="{{ $value, $value | testConverter() }}" textWrap="true" />
+			<Label text="{{ specification }}" textWrap="true" />
 			<Label text="{{ summary }}" textWrap="true" />
 		</StackLayout>
 	</ScrollView>

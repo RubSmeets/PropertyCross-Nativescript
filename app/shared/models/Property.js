@@ -1,12 +1,15 @@
+var utilsModule = require("../../shared/utils/util");
+
 /**
  * Property model constructor
  * 
  * @param {constructor arguments}
  */
 function Property ( args ) {
+	var formattedPrice = utilsModule.currency(args.price)
 	this.guid =  args.guid;
 	this.title = args.title;
-	this.price = args.price;
+	this.price = formattedPrice;
 	this.property_type = args.property_type;
 	this.img_url = args.img_url;
 	this.thumb_url = args.thumb_url;

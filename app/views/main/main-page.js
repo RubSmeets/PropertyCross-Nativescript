@@ -1,6 +1,7 @@
 var vmModule = require("./main-view-model");
 var viewModel = vmModule.model;
 var viewModule = require("ui/core/view");
+var enumsModule = require("ui/enums");
 var utils = require("../../shared/utils/util");
 var locationModule = require("location");
 var appModule = require("application");
@@ -303,7 +304,7 @@ function _showTitleMessage ( message ) {
 	viewModel.set("listTitle", message);
 
 	// Check if allready visible
-	if (!listTitleLabel._isVisible) { listTitleLabel.visibility = "visible"; }
+	if (!listTitleLabel._isVisible) { listTitleLabel.visibility = enumsModule.Visibility.visible; }
 
 	// Show list view
 	_showListView();
@@ -311,17 +312,17 @@ function _showTitleMessage ( message ) {
 
 function _hideTitleMessage () {
 	var listTitleLabel = viewModule.getViewById(_currPage, "previousSearchesList");
-	if (listTitleLabel._isVisible) { listTitleLabel.visibility = "collapsed"; }
+	if (listTitleLabel._isVisible) { listTitleLabel.visibility = enumsModule.Visibility.collapse; }
 }
 
 function _showListView () {
 	var listView = viewModule.getViewById(_currPage, "previousSearchesList");
-	if(!listView._isVisible) { listView.visibility = "visible"; }
+	if(!listView._isVisible) { listView.visibility = enumsModule.Visibility.visible; }
 }
 
 function _hideListView () {
 	var listView = viewModule.getViewById(_currPage, "mainListTitle");
-	if(listView._isVisible) { listView.visibility = "collapsed"; }
+	if(listView._isVisible) { listView.visibility = enumsModule.Visibility.collapse; }
 }
 
 function _updateListViewSource ( items ) {
@@ -356,7 +357,7 @@ function _showErrorMessage ( message ) {
 	viewModel.set("errorMessage", message);
 
 	// Check if allready visible
-	if (!errorLabel._isVisible) { errorLabel.visibility = "visible"; }
+	if (!errorLabel._isVisible) { errorLabel.visibility = enumsModule.Visibility.visible; }
 }
 
 /**
@@ -367,7 +368,7 @@ function _showErrorMessage ( message ) {
 function _hideErrorMessage () {
 	var errorLabel = viewModule.getViewById(_currPage, "mainErrorMessage");
 	// Check if allready hidden
-	if (errorLabel._isVisible) { errorLabel.visibility = "collapsed"; }
+	if (errorLabel._isVisible) { errorLabel.visibility = enumsModule.Visibility.collapse; }
 }
 
 exports.onLoaded = onLoaded;

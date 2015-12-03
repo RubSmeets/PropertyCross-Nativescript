@@ -1,4 +1,13 @@
 Image {
-	height: 200;
-	margin: 25;
+	height: 200px;
+	margin: 10px;
+}
+
+Label {
+	margin: 2px 15px;
+	font-size: 15px;
+}
+
+.title {
+	font-size: 25px;
 }

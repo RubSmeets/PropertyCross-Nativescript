@@ -15,12 +15,12 @@
 					 | img |---------------|
 					 |     | title         |
 					 ----------------------- -->
-				<GridLayout rows="auto, auto" columns="auto, *" >
+				<GridLayout rows="32, auto" columns="auto, *" >
 					<Image src="{{ thumb_url }}" width="64" height="64"
 						rowSpan="2" />
-					<Label text="{{ price }}" cssClass="title"
+					<Label text="{{ price }}" cssClass="title padded" verticalAlignment = "bottom"
 						col="1" />
-					<Label text="{{ title }}" cssClass="title"
+					<Label text="{{ title }}" cssClass="normal padded"
 						row="1"
 						col="1" />
 				</GridLayout>

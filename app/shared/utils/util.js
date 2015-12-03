@@ -28,6 +28,20 @@ function stringifyURLparameters ( params ) {
 	return stringifyParams.slice(0,-1);
 }
 
+/**
+ * Format price to display currency
+ */
+function currency ( value ) {
+	return "£" + _number(value);
+}
+
+function _number ( number ) {
+	number = number + "";
+	var j = (j = number.length) > 3 ? j % 3 : 0; //part before first comma
+	return (j ? number.substr(0, j) + ',' : "") + number.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + ",");
+}
+
 exports.trim = trim;
 exports.formatCoord = formatCoord;
 exports.stringifyURLparameters =stringifyURLparameters;
+exports.currency = currency;

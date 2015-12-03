@@ -20,7 +20,7 @@ function onLoaded( args ) {
 	var listView;
 
 	if(navigationContext !== undefined) {
-		if(navigationContext.hasOwnProperty("properties")) { vmModel.set("isEmpty", false); }
+		if(navigationContext.properties.length !== 0) { vmModel.set("isEmpty", false); }
 		else { vmModel.set("isEmpty", true); }
 
 		page.bindingContext = vmModel;
