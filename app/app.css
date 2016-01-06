@@ -6,3 +6,7 @@ button {
 .awesome-icon {
 	font-family: 'FontAwesome';
 }
+
+.ios-form-button {
+    margin: 12 6;
+}
