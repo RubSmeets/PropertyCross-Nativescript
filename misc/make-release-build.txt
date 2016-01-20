@@ -1,0 +1,16 @@
+Dev-dependency for minifying JS
+- https://www.smashingmagazine.com/2016/01/issue-with-global-node-npm-packages/ (shows how to add and use local npm-commandline tools in your project)
+
+******* ANDROID *********
+After creating a signing key we can create a release build using the commandline tools from nativescript
+
+command:
+tns build android [--compileSdk <API Level>] [--key-store-path <File Path> --key-store-password <Password> --key-store-alias <Name> --key-store-alias password <Password>] [--release] [--static-bindings] [--copy-to <File Path>]
+
+Modify the above command to fit your needs and leave out the undesired options
+
+******* iOS *********
+command:
+tns build ios [--for-device] [--release] [--copy-to <File Path>]
+
+NOTE: valid certificate information should be configured in your xcode to build the app

@@ -3,7 +3,6 @@ var viewModel = vmModule.model;
 var viewModule = require("ui/core/view");
 var enumsModule = require("ui/enums");
 var utils = require("../../shared/utils/util");
-var locationModule = require("location");
 var appModule = require("application");
 var constants = require("../../shared/utils/constants");
 var nestoriaAPI = require("../../shared/nestoriaAPI");
@@ -13,6 +12,8 @@ var Search = require("../../shared/models/Search");
 var vmSearchModule = require("./searches-view-model");
 var PropertyModel = require("../../shared/models/Property");
 var platformModule = require("platform");
+var geolocationModule = require("nativescript-geolocation");
+//var locationModule = require("location"); // DEPRECATED 
 
 var _currPage;
 
@@ -80,33 +81,9 @@ function onMyLocationTap( args ) {
 	var locationOptions, values;
 
 	// Check if geoloaction is enabled
-	if (locationModule.LocationManager.isEnabled()) {
-		console.log("LocationManager is Enabled");
-
-		// Set the location options for our location request
-		locationOptions = {
-			desiredAccuracy: 50,
-			maximumAge: 60000,
-			timeout: 1000 // 5000
-		};
-		locationModule.getLocation(locationOptions).then(function (location) {
-			// Format coordinates (move Belgium to UK) and make request
-			console.log("location: " + location.latitude);
-			values = {
-				centre_point: {
-					coords: {
-						latitude: location.latitude + 0.6983,
-						longitude: location.longitude - 4.9857
-					}
-				}
-			};
-			_makeRequest(values);
-		}, function (error) {
-		    // Set and show error message
-			_showErrorMessage(constants.LOCATION_SERVICE_ERROR);
-		});
-	} else {
+	if (!geolocationModule.isEnabled()) {
 		console.log("LocationManager is not Enabled");
+
 		// Set and show the error message
 		_showErrorMessage(constants.LOCATION_DISABLED_ERROR);
 
@@ -122,7 +99,36 @@ function onMyLocationTap( args ) {
 				iosLocationManager.requestWhenInUseAuthorization();
 			}
 		}
-	}
+        //geolocationModule.enableLocationRequest(); //Doens't seem to work??
+    } else {
+    	console.log("LocationManager is Enabled");
+
+		// Set the location options for our location request
+		locationOptions = {
+			desiredAccuracy: 4,
+			maximumAge: 60000,
+			timeout: 10000 // 5000
+		};
+
+    	var location = geolocationModule.getCurrentLocation(locationOptions)
+			.then(function(location) {
+				if (location) {
+					console.log("Current location is: " + location);
+					values = {
+						centre_point: {
+							coords: {
+								latitude: location.latitude + 0.6983,
+								longitude: location.longitude - 4.9857
+							}
+						}
+					};
+					_makeRequest(values);
+				}
+			}, function(e){
+				//Set and show error message
+				_showErrorMessage(constants.LOCATION_SERVICE_ERROR);
+			});
+    }
 }
 
 /**

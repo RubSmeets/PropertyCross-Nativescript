@@ -8,7 +8,7 @@
 * The HTTP get request requires some request parameters to filter the request at the back-end
 	- Should use the request-options of the http-module (or fetch module) to supply the parameters
 	- TEMP SOLUTION:
-		- Used a function to strinify the parameters and concatenated them to the remote domain url.
+		- Used a function to stringify the parameters and concatenated them to the remote domain url.
 
 * In android the softkeyboard is shown on application start-up for the searchBar UI module. There is no method to hide the keyboard like with UI textView module. There is however a workaround: https://github.com/NativeScript/NativeScript/issues/849
 	- Should use the dismissSoftInput method to hide the keyboard
@@ -19,6 +19,15 @@
 	- Should call the UI update once the files are loaded from localstorage
 	- TEMP SOLUTION:
 		- Delay execution of the UI update based on a fixed value (unrelated to file load times --> NOT GOOD!)
+
+# PROBLEMS AND POSSIBLE SOLUTIONS #
+# -------- General --------
+* Infinite scrolling results in multiple request instead of one request.
+	- FIX: added isLoading boolean that stops the multiple request (event however is called multiple times)
+
+* When navigating to the details page, we lose the previously loaded data in our listView and scrolling history is lost
+
+* Enabling and disabling animate navigation does absolutely nothing
 
 # -------- iOS --------
 * Can't locate "application.plist" file for editing permissions
@@ -40,7 +49,15 @@
 	- In Android it works, iOS still needs some tuning
 		- FIX: tied visibility attribute of list to isEmpty property
 
+* Creating file fails in ios
+	- FIX: use documents() instead of currentApp()
+
+* New geolocation module cannot set permissions on ios 8 or higher
+	- FIX: use old method (see code)
+
 # -------- Android --------
+* Requesting location fails several times for unkown reason.
+	- FIX: for some reason it takes more than 10 seconds to receive a location from the service. Change the time-out to 10 seconds or more
 
 # DEV TOOLS #
 # -------- General --------
@@ -56,5 +73,10 @@
 * Show how many pages are left at the bottom of the list view
 
 * Change the result details faves-button to show an icon instead of text
+
+run on ios device -->
+- tns build ios
+- open xcode and run on device by pressing CMD+i (clean-build-install)
+
 
 

@@ -1,0 +1,6 @@
+build using xcode:
+- CMD+i (clean-build-install)
+
+open instruments:
+- spotlight --> instruments
+- select cpu profiling...

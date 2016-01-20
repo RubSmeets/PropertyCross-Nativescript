@@ -1,7 +1,7 @@
 var fs = require("file-system");
 var constants = require("../utils/constants");
 
-var _privateFolder = fs.knownFolders.currentApp();
+var _privateFolder = fs.knownFolders.documents(); //currentApp is read-only in iOS
 var _localSearchesFolder = _privateFolder.getFolder(constants.RECENT_SEARCHES_FOLDER);
 var _localFavoritesFolder = _privateFolder.getFolder(constants.FAVOURITES_FOLDER);
 var _favourites = [];
